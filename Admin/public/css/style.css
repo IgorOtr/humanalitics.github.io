@@ -1,13 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
+
+body {
+    background-color: #1c1c1c;
+}
+
+* {
+    font-family: Rubik;
+}
+
+
 .btn-primary {
     background-color: #FEBE00;
-    box-shadow: 0px 5px 10px #efb300;
+    box-shadow: 0px 5px 10px #efb30047;
 }
 
 .btn:hover {
     color: var(--mdb-btn-hover-color);
     background-color: #efb300;
     border-color: #efb300;
-    box-shadow: 0px 5px 10px #efb300 !important;
+    box-shadow: 0px 5px 10px #efb30047 !important;
 }
 
 .btn-check:focus+.btn-primary, .btn-check:focus-visible+.btn-primary, .btn-primary:focus {
@@ -25,4 +36,66 @@ child:active, :not(.btn-check)+.btn:active {
 .presentation_text {
     font-size: 18px;
     color: #bdbdbd;
+}
+
+.hidden-arrow i {
+    color: #ffffff !important;
+}
+
+.main-section {
+    margin-top: 100px;
+}
+
+.main-section h1 {
+    color: #FEBE00;
+    margin-bottom: 20px;
+}
+
+.main-section p {
+    color: #ffffff;
+    font-size: 20px;
+    text-align: justify;
+}
+
+.navbar {
+    background-color: #1c1c1c;
+}
+
+.nav-link {
+    color: #ffffff;
+}
+.nav-link:hover {
+    color: #9f9f9f;
+}
+
+.options-section {
+    margin-top: 100px;
+}
+
+.opt__card {
+    border: 2px solid #FEBE00;
+    width: 60%;
+    height: 340px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    transition: .4s;
+    cursor: pointer;
+}
+
+.opt__card:hover {
+    transition: .2s;
+    transform: scale(1.08);
+    box-shadow: 0px 0px 20px #febe0044;
+}
+
+.opt__card__header i {
+    font-size: 50px;
+    color: #FEBE00;
+}
+
+.opt__card__body h3 {
+    color: #FEBE00;
 }

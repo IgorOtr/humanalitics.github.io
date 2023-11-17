@@ -24,7 +24,7 @@
 
             <div class="row">
                 <div class="col-md-12 text-center">
-                    <img src="../images/humanalitics/humanalitics-logo-1.png" alt="">
+                    <img src="../images/humanalitics/logoo.png" width="450" alt="">
                 </div>
 
                 <div class="col-md-12 mt-4">
