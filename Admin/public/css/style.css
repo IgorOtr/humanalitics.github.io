@@ -1,0 +1,28 @@
+.btn-primary {
+    background-color: #FEBE00;
+    box-shadow: 0px 5px 10px #efb300;
+}
+
+.btn:hover {
+    color: var(--mdb-btn-hover-color);
+    background-color: #efb300;
+    border-color: #efb300;
+    box-shadow: 0px 5px 10px #efb300 !important;
+}
+
+.btn-check:focus+.btn-primary, .btn-check:focus-visible+.btn-primary, .btn-primary:focus {
+    box-shadow: 0px 5px 10px #efb300;
+    background-color: #efb300;
+}
+
+child:active, :not(.btn-check)+.btn:active {
+    color: var(--mdb-btn-active-color);
+    background-color: #efb300;
+    border-color: var(--mdb-btn-active-border-color);
+    box-shadow: 0px 10px 10px #efb300;
+}
+
+.presentation_text {
+    font-size: 18px;
+    color: #bdbdbd;
+}
