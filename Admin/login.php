@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,12 +19,21 @@
 
     <link rel="stylesheet" href="public/css/style.css">
     <title>Humanalitics - Amin</title>
+
 </head>
 
 <body>
 
     <section style="height: 100vh; display: flex; justify-content: center; align-items: center;">
         <div class="container">
+
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6 text-center">
+                    <?php if(isset($_SESSION['error-login'])){ echo $_SESSION['error-login'];}?>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
 
             <div class="row">
                 <div class="col-md-12 text-center">
@@ -48,13 +61,13 @@
                     <form class="p-4" action="./src/controllers/UserController.php" method="post">
                         <!-- Email input -->
                         <div class="form-outline mb-4">
-                            <input type="email" id="form2Example1" name="user-email" class="form-control" />
+                            <input type="email" id="form2Example1" name="user-email" class="form-control" required/>
                             <label class="form-label" for="form2Example1">Email</label>
                         </div>
 
                         <!-- Password input -->
                         <div class="form-outline mb-4">
-                            <input type="password" id="form2Example2" name="user-password" class="form-control" />
+                            <input type="password" id="form2Example2" name="user-password" class="form-control" required/>
                             <label class="form-label" for="form2Example2">Senha</label>
                         </div>
 

@@ -17,8 +17,10 @@ include './includes/head.php';
                     <h1>Olá, Erika! Tudo certo?</h1>
                     <p>
                         Essa é uma plataforma que, por enquanto, você vai poder escrever
-                        os posts do blog e alterar os banners do site. Conforme sua
-                        preferência e demanda, nossa ideia é adicionar mais funcionaliidades.
+                        os posts do blog e alterar os banners do site. Conforme sua preferência 
+                        e demanda, nossa ideia é adicionar mais funcionalidades. Até o momento, 
+                        apenas eu (Igor) e você temos acesso à essa plataforma. Caso precise, entre
+                        em contato comigo para criar mais usuários.
                     </p>
                 </div>
                 <div class="col-md-2"></div>
@@ -30,7 +32,7 @@ include './includes/head.php';
         <div class="container">
             <div class="row">
                 <div class="col-md-6 d-flex justify-content-center align-items-center">
-                    <div class="opt__card p-5">
+                    <div class="opt__card p-5" onclick="redirectToBanner()">
                         <div class="opt__card__header text-center">
                             <i class='bx bx-image-add'></i>
                         </div>
@@ -40,7 +42,7 @@ include './includes/head.php';
                     </div>
                 </div>
                 <div class="col-md-6 d-flex justify-content-center align-items-center">
-                    <div class="opt__card p-5">
+                    <div class="opt__card p-5" onclick="redirectToBlog()">
                         <div class="opt__card__header text-center">
                             <i class='bx bx-edit-alt'></i>
                         </div>

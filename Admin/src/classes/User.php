@@ -18,16 +18,24 @@ class User {
        $rowCount = $auth_user->rowCount();
 
        if ($rowCount > 0) {
-            $_SESSION["nome"] = $auth_result["name"];
-            $_SESSION["email"] = $auth_result["email"];
 
-            return header('location: http://localhost/Humanalitics/Admin');
+        if (isset($_SESSION['error-login'])) {
+          
+              unset($_SESSION['error-login']);
+        }
+            
+        $_SESSION["nome"] = $auth_result["name"];
+        $_SESSION["email"] = $auth_result["email"];
+
+        return header('location: http://localhost/Humanalitics/Admin');
 
        } else {
 
-        $_SESSION['error-login'] = "Email e/ou senha inválidos.";
+        $_SESSION['error-login'] = '<div class="alert alert-danger" role="alert">
+        Email e/ou senha inválidos.
+      </div>';
 
-        return header('location: http://localhost/Humanalitics/Admin/login.php');
+        header('location: http://localhost/Humanalitics/Admin/login.php');
        }
     }
 }
