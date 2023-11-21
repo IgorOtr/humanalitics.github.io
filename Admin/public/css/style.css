@@ -2,6 +2,7 @@
 
 body {
     background-color: #1c1c1c;
+    height: 100vh;
 }
 
 * {
@@ -119,4 +120,9 @@ child:active, :not(.btn-check)+.btn:active {
 
 .nav-link:focus {
     color: #ffffff !important;
+}
+
+footer {
+    position: relative;
+    bottom: -68px;
 }

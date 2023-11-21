@@ -19,10 +19,10 @@
                 <!-- Left links -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Blog</a>
+                        <a class="nav-link" target="_blank" href="http://localhost/Humanalitics/Admin/blog.php">Blog</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Banners</a>
+                        <a class="nav-link" target="_blank" href="http://localhost/Humanalitics/Admin/banner.php">Banners</a>
                     </li>
                     <!-- <li class="nav-item">
                         <a class="nav-link" href="#">Projects</a>
@@ -43,7 +43,7 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
                         <li>
-                            <a class="dropdown-item" href="#">Logout</a>
+                            <a class="dropdown-item" href="logout.php">Sair <i class='bx bx-log-out'></i></a>
                         </li>
                     </ul>
                 </div>
