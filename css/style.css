@@ -5,6 +5,10 @@ body {
   background-color: #ffffff;
 }
 
+.difference_section {
+  background-color: #FFFFFF;
+}
+
 .layout_padding {
   padding-top: 90px;
   padding-bottom: 90px;
@@ -517,6 +521,11 @@ a:focus {
   background-color: transparent;
   border-color: #FEBE00;
   color: #FEBE00;
+}
+
+.service_section .box {
+  min-height: 290px;
+  overflow: hidden;
 }
 
 .client_section {

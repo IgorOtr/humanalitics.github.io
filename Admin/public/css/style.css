@@ -15,7 +15,7 @@ body {
     box-shadow: 0px 5px 10px #efb30047;
 }
 
-.btn:hover {
+.btn-primary:hover {
     color: var(--mdb-btn-hover-color);
     background-color: #efb300;
     border-color: #efb300;
@@ -102,7 +102,7 @@ child:active, :not(.btn-check)+.btn:active {
 }
 
 .form-control {
-    color: #ffffff !important;
+    color: #a9a9a9 !important;
 }
 
 .form-outline .form-control~.form-label {
@@ -124,5 +124,41 @@ child:active, :not(.btn-check)+.btn:active {
 
 footer {
     position: relative;
-    bottom: -68px;
+    bottom: 0px;
+    left: 0;
+}
+
+.accordion-button {
+    background-color: #FEBE00;
+    border-radius: 8px 8px 0px 0px !important;
+    color: #ffffff !important;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #FEBE00;
+}
+
+.accordion-flush .accordion-button:not(.collapsed) {
+    box-shadow: 1px 0px 5px #00000000;
+}
+
+.accordion-body{
+    border: 1px solid #FEBE00;
+}
+
+.form-label {
+    margin-bottom: 0.5rem;
+    color: #ffffff;
+}
+
+.card {
+    background-color: #ffffff00;
+    background-clip: border-box;
+    border: 1px solid #FEBE00;
+    border-radius: var(--mdb-card-border-radius);
+    box-shadow: var(--mdb-card-box-shadow);
+}
+
+.card-title {
+    color: #ffffff;
 }
