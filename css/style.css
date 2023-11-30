@@ -1,4 +1,9 @@
 @import url("font-awesome.min.css");
+
+* {
+  scroll-behavior:smooth;
+}
+
 body {
   font-family: "Poppins", sans-serif;
   color: #0c0c0c;

@@ -31,35 +31,35 @@ include './includes/head.php';
                     <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
                         data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
-                            <form class="row g-3" enctype="multipart/form-data" method="post" action="">
+                            <form class="row g-3" enctype="multipart/form-data" method="post" action="src/controllers/BannerController.php">
                                 <div class="col-md-6">
                                     <label for="inputEmail4" class="form-label">Título <small>(opcional)</small></label>
                                     <input type="text" class="form-control" id="inputEmail4"
-                                        placeholder="Adicione um Título ao Bannner:">
+                                        placeholder="Adicione um Título ao Bannner:" name="banner_title">
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inputPassword4" class="form-label">Sub-título
                                         <small>(opcional)</small></label>
                                     <input type="text" class="form-control" id="inputPassword4"
-                                        placeholder="Adicione um sub-título ao Bannner:">
+                                        placeholder="Adicione um sub-título ao Bannner:" name="banner_sub_title">
                                 </div>
                                 <div class="col-12">
                                     <label for="exampleFormControlTextarea1" class="form-label">Texto
                                         <small>(opcional)</small></label>
                                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                                        placeholder="Adicione um texto ao Bannner:"></textarea>
+                                        placeholder="Adicione um texto ao Bannner:" name="banner_text"></textarea>
                                 </div>
                                 <div class="col-12">
                                     <label for="inputAddress2" class="form-label">Link <small>(opcional)</small></label>
                                     <input type="text" class="form-control" id="inputAddress2"
-                                        placeholder="Adicione um link ao Bannner:">
+                                        placeholder="Adicione um link ao Bannner:" name="banner_link">
                                 </div>
                                 <div class="col-md-12">
                                     <label for="formFile" class="form-label">Escolha a foto do Banner:</label>
-                                    <input class="form-control" type="file" id="formFile">
+                                    <input class="form-control" type="file" id="formFile" name="banner_file">
                                 </div>
                                 <div class="col-12">
-                                    <button type="submit" class="btn btn-primary w-100">Adicionar</button>
+                                    <button type="submit" name="add_new_banner" class="btn btn-primary w-100">Adicionar</button>
                                 </div>
                             </form>
                         </div>
