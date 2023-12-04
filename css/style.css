@@ -4,6 +4,22 @@
   scroll-behavior:smooth;
 }
 
+.header_section{
+  background-color: #1c1c1c;
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
+}
+
+.custom_nav-container .navbar-nav .nav-item .nav-link {
+  border-radius: 8px;
+  padding: 10px 15px 10px 15px !important;
+
+}
+
+.slider_section ol.carousel-indicators {
+  bottom: 330px !important;
+}
+
 body {
   font-family: "Poppins", sans-serif;
   color: #0c0c0c;

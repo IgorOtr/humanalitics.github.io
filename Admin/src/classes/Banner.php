@@ -1,13 +1,33 @@
 <?php
-session_start();
+
+@session_start();
 
 class Banner{
 
+    public function GetAllBannersToFront()
+    {
+        require 'Admin/src/db/connect.php';
+
+        $getBanners = $conn->prepare("SELECT * FROM banner WHERE banner_status = 'ativo' ");
+
+        $getBanners->execute();
+
+        $data = $getBanners->fetchAll();
+
+        return $data;
+    }
+
     public function GetAllBanners()
     {
-        require '../db/connect.php';
+        require 'src/db/connect.php';
 
-        echo 'GET ALL';
+        $getBanners = $conn->prepare("SELECT * FROM banner");
+
+        $getBanners->execute();
+
+        $data = $getBanners->fetchAll();
+
+        return $data;
     }
 
     public static function UploadBannerToFolder($img)
@@ -70,8 +90,6 @@ class Banner{
 
             if ($uploadFile) {
 
-                
-
                 if ($uploadFile[0] === true) {
 
                     $insert_banner = $conn->prepare(
@@ -108,6 +126,31 @@ class Banner{
                         }
                 }
             }
+    }
+
+    public function UpdateStatus(string $id, string $status)
+    {
+        require '../db/connect.php';
+
+        $updateStatus = $conn->prepare("UPDATE banner SET banner_status = :newStatus WHERE id = :id");
+        $updateStatus->bindValue(':newStatus', $status);
+        $updateStatus->bindValue(':id', $id);
+        $success = $updateStatus->execute();
+        
+        if ($success) {
+
+            $_SESSION['statusUpdate'] = '<div class="alert alert-primary alert-dismissible fade show"role="alert">
+            Status alterado com sucesso!
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>';
+
+            header('Location: http://localhost/Humanalitics/Admin/banner.php');
+        } else {
+
+            $_SESSION['statusUpdate'] = '<div class="alert alert-danger" role="alert">Não foi possível alterar o status!</div>';
+
+            header('Location: http://localhost/Humanalitics/Admin/banner.php');
+        }
     }
     
 }

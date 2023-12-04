@@ -1,13 +1,26 @@
 <?php
 session_start();
 require 'session.php';
-
+require './src/classes/Banner.php';
 include './includes/head.php';
+
+$class_banners = new Banner();
+$banners = $class_banners->GetAllBanners();
+
+// var_dump($banners);
+// die();
+
+
 ?>
 
 <body>
     <?php include './includes/navbar.php'?>
+    <?php
 
+        if ($_SESSION['statusUpdate']) {
+            echo $_SESSION['statusUpdate'];
+        }
+    ?>
     <section class="main-section mb-5">
         <div class="container">
             <div class="row">
@@ -31,7 +44,8 @@ include './includes/head.php';
                     <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
                         data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
-                            <form class="row g-3" enctype="multipart/form-data" method="post" action="src/controllers/BannerController.php">
+                            <form class="row g-3" enctype="multipart/form-data" method="post"
+                                action="src/controllers/BannerController.php">
                                 <div class="col-md-6">
                                     <label for="inputEmail4" class="form-label">Título <small>(opcional)</small></label>
                                     <input type="text" class="form-control" id="inputEmail4"
@@ -59,7 +73,8 @@ include './includes/head.php';
                                     <input class="form-control" type="file" id="formFile" name="banner_file">
                                 </div>
                                 <div class="col-12">
-                                    <button type="submit" name="add_new_banner" class="btn btn-primary w-100">Adicionar</button>
+                                    <button type="submit" name="add_new_banner"
+                                        class="btn btn-primary w-100">Adicionar</button>
                                 </div>
                             </form>
                         </div>
@@ -80,30 +95,41 @@ include './includes/head.php';
 
         <div class="container">
             <div class="row">
+
+                <?php foreach($banners as $key => $banner){
+                
+                $status = ($banner['banner_status'] == 'ativo') ? '<i style="font-size: 16px;" class="bx bx-block"></i>' : '<i style="font-size: 16px;" class="bx bx-check-circle"></i>';
+                $tooltip = ($banner['banner_status'] == 'ativo') ? 'data-bs-toggle="tooltip" data-bs-placement="top" title="Bloquear"' : 'data-bs-toggle="tooltip" data-bs-placement="top" title="Desbloquear"';
+                $link = ($banner['banner_status'] == 'ativo') ? 'http://localhost/Humanalitics/Admin/src/controllers/BannerController.php?ed_stts=true&b_id='.$banner['id'].'&set_stts=bloq' : 'http://localhost/Humanalitics/Admin/src/controllers/BannerController.php?ed_stts=true&b_id='.$banner['id'].'&set_stts=ativo';
+            ?>
+
                 <div class="col-md-6 mb-3">
-                    <div class="card w-100" style="width: 18rem;">
-                        <img src="../images/humanalitics/mulher-jovem-e-bonita-no-escritorio-em-casa-trabalhando-em-casa-conceito-de-teletrabalho.jpg" style="border-radius: 7px;" class="card-img-top" alt="...">
+                    <div class="card w-100" style="width: 18rem; height: 650px; overflow: hidden;">
+                        <img src="./public/img/banners/<?php echo $banner['banner_image']?>" style="border-radius: 7px;"
+                            class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Editar</a>
-                            <a href="#" class="btn btn-danger">Apagar</a>
+                            <h5 class="card-title"><?php echo $banner['banner_title']?> <span
+                                    style="color:#febe00;"><?php echo $banner['banner_sub_title']?></span></h5>
+                            <p class="card-text">
+                                <?php echo strip_tags(substr($banner['banner_text'], 0, 180)).'...'?>
+                            </p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <a href="#" class="btn btn-primary">Editar</a>
+                                    <a href="#" class="btn btn-danger">Apagar</a>
+                                </div>
+                                <div class="col-md-6 text-end">
+                                    <a href="<?php echo $link;?>" class="btn btn-primary"
+                                        <?php echo $tooltip;?>><?php echo $status;?></a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 mb-3">
-                    <div class="card w-100" style="width: 18rem;">
-                        <img src="../images/humanalitics/colegas-sorridentes-de-tiro-medio-com-smartphone.jpg" style="border-radius: 7px;" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Editar</a>
-                            <a href="#" class="btn btn-danger">Apagar</a>
-                        </div>
-                    </div>
-                </div>
+
+
+                <?php }?>
+
             </div>
         </div>
 

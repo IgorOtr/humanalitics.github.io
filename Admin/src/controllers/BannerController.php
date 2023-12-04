@@ -22,4 +22,33 @@ if (isset($_POST['add_new_banner'])) {
 
     $class_banner = new Banner();
     $insert_banner = $class_banner->InsertBanner($title, $sub_title, $text, $link, $img, $status, $created_at); 
-}
+
+} else {
+
+    header('Location: http://localhost/Humanalitics/Admin/banner.php');
+} 
+
+if ($_GET['ed_stts']) {
+
+    if ($_GET['b_id']) {
+
+        if ($_GET['set_stts']) {
+
+            $class_banner = new Banner();
+            $insert_banner = $class_banner->UpdateStatus($_GET['b_id'], $_GET['set_stts']); 
+
+        } else {
+    
+            header('Location: http://localhost/Humanalitics/Admin/banner.php');
+        } 
+
+
+    } else {
+    
+        header('Location: http://localhost/Humanalitics/Admin/banner.php');
+    } 
+    
+} else {
+    
+    header('Location: http://localhost/Humanalitics/Admin/banner.php');
+} 

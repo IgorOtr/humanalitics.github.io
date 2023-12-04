@@ -5,8 +5,31 @@ body {
     height: 100vh;
 }
 
+.alert {
+    --mdb-alert-bg: transparent;
+    --mdb-alert-padding-x: 1.5rem;
+    --mdb-alert-padding-y: 1.25rem;
+    --mdb-alert-margin-bottom: 1rem;
+    --mdb-alert-color: inherit;
+    --mdb-alert-border-color: transparent;
+    --mdb-alert-border: 1px solid var(--mdb-alert-border-color);
+    --mdb-alert-border-radius: 0rem 0rem .5rem .5rem;
+    position: relative;
+    padding: var(--mdb-alert-padding-y) var(--mdb-alert-padding-x);
+    margin-bottom: var(--mdb-alert-margin-bottom);
+    color: var(--mdb-alert-color);
+    background-color: var(--mdb-alert-bg);
+    border: var(--mdb-alert-border);
+    border-radius: var(--mdb-alert-border-radius);
+}
+
 * {
     font-family: Rubik;
+}
+
+.alert-primary {
+    background-color: #febe00;
+    color: #000000;
 }
 
 
@@ -20,6 +43,13 @@ body {
     background-color: #efb300;
     border-color: #efb300;
     box-shadow: 0px 5px 10px #efb30047 !important;
+}
+
+.btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active {
+    color: var(--mdb-btn-active-color);
+    background-color: #efb300;
+    border-color: #efb300;;
+    box-shadow: 0px 5px 10px #efb300;
 }
 
 .btn-check:focus+.btn-primary, .btn-check:focus-visible+.btn-primary, .btn-primary:focus {
