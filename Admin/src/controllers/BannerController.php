@@ -2,15 +2,9 @@
 
 require "../classes/Banner.php";
 
+$action = $_GET['action'];
+
 if (isset($_POST['add_new_banner'])) {
-
-    // echo '<pre>';
-    // var_dump($_POST);
-    // echo '<pre>';
-
-    // echo '<pre>';
-    // var_dump($_FILES['banner_file']);
-    // echo '<pre>';
 
     $title = $_POST['banner_title'];
     $sub_title = $_POST['banner_sub_title'];
@@ -23,12 +17,9 @@ if (isset($_POST['add_new_banner'])) {
     $class_banner = new Banner();
     $insert_banner = $class_banner->InsertBanner($title, $sub_title, $text, $link, $img, $status, $created_at); 
 
-} else {
+}
 
-    header('Location: http://localhost/Humanalitics/Admin/banner.php');
-} 
-
-if ($_GET['ed_stts']) {
+if ($action == 'ed_stts') {
 
     if ($_GET['b_id']) {
 
@@ -38,17 +29,31 @@ if ($_GET['ed_stts']) {
             $insert_banner = $class_banner->UpdateStatus($_GET['b_id'], $_GET['set_stts']); 
 
         } else {
-    
+
+            die("aqui");
+
             header('Location: http://localhost/Humanalitics/Admin/banner.php');
         } 
 
-
     } else {
+
+        die("aqui");
     
         header('Location: http://localhost/Humanalitics/Admin/banner.php');
     } 
     
-} else {
-    
-    header('Location: http://localhost/Humanalitics/Admin/banner.php');
-} 
+}
+
+if ($action == 'del_ban') {
+
+    if ($_GET['b_id']) {
+
+        $class_banner = new Banner();
+        $insert_banner = $class_banner->DeleteBanner($_GET['b_id']); 
+
+    } else {
+
+        header('Location: http://localhost/Humanalitics/Admin/banner.php');
+    }
+
+}

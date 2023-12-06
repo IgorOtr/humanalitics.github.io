@@ -17,7 +17,8 @@ $banners = $class_banners->GetAllBanners();
     <?php include './includes/navbar.php'?>
     <?php
 
-        if ($_SESSION['statusUpdate']) {
+        if (@$_SESSION['statusUpdate']) {
+
             echo $_SESSION['statusUpdate'];
         }
     ?>
@@ -100,7 +101,8 @@ $banners = $class_banners->GetAllBanners();
                 
                 $status = ($banner['banner_status'] == 'ativo') ? '<i style="font-size: 16px;" class="bx bx-block"></i>' : '<i style="font-size: 16px;" class="bx bx-check-circle"></i>';
                 $tooltip = ($banner['banner_status'] == 'ativo') ? 'data-bs-toggle="tooltip" data-bs-placement="top" title="Bloquear"' : 'data-bs-toggle="tooltip" data-bs-placement="top" title="Desbloquear"';
-                $link = ($banner['banner_status'] == 'ativo') ? 'http://localhost/Humanalitics/Admin/src/controllers/BannerController.php?ed_stts=true&b_id='.$banner['id'].'&set_stts=bloq' : 'http://localhost/Humanalitics/Admin/src/controllers/BannerController.php?ed_stts=true&b_id='.$banner['id'].'&set_stts=ativo';
+                $link = ($banner['banner_status'] == 'ativo') ? 'http://localhost/Humanalitics/Admin/src/controllers/BannerController.php?action=ed_stts&b_id='.$banner['id'].'&set_stts=bloq' : 'http://localhost/Humanalitics/Admin/src/controllers/BannerController.php?action=ed_stts&b_id='.$banner['id'].'&set_stts=ativo';
+                $link_del = 'http://localhost/Humanalitics/Admin/src/controllers/BannerController.php?action=del_ban&b_id='.$banner['id'];
             ?>
 
                 <div class="col-md-6 mb-3">
@@ -116,7 +118,7 @@ $banners = $class_banners->GetAllBanners();
                             <div class="row">
                                 <div class="col-md-6">
                                     <a href="#" class="btn btn-primary">Editar</a>
-                                    <a href="#" class="btn btn-danger">Apagar</a>
+                                    <a href="<?php echo $link_del;?>" class="btn btn-danger">Apagar</a>
                                 </div>
                                 <div class="col-md-6 text-end">
                                     <a href="<?php echo $link;?>" class="btn btn-primary"

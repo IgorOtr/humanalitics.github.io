@@ -60,7 +60,7 @@ $banners = $banner_class->GetAllBannersToFront();
                     <nav class="navbar navbar-expand-lg custom_nav-container">
                         <div class="row">
                             <div class="col-md-6">
-                                <a class="navbar-brand" href="index.html">
+                                <a class="navbar-brand2" href="index.html">
                                     <img style="width: 250px;" src="images/humanalitics/logoo.png" alt="">
                                 </a>
                                 <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -111,29 +111,33 @@ $banners = $banner_class->GetAllBannersToFront();
 
                         <?php foreach ($banners as $key => $banner) {?>
 
-                        <div class="owl-item d-flex align-items-center"
+                        <div class="owl-item "
                             style="height: 100%; width: 178px; margin-right: 20px; background-size: cover; background-repeat: no-repeat; background-image: url(Admin/public/img/banners/<?php echo $banner['banner_image']?>);">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-md-7">
-                                        <div class="detail-box">
-                                            <h1>
-                                                <?php echo $banner['banner_title']?><br>
-                                                <span>
-                                                    <?php echo $banner['banner_sub_title']?>
-                                                </span>
-                                            </h1>
-                                            <p>
-                                                <?php echo $banner['banner_text']?>
-                                            </p>
-                                            <div class="btn-box">
-                                                <a href="<?php echo $banner['banner_link']?>" target="_blank"
-                                                    class="btn-2">Saiba Mais</a>
+
+                            <div class="banner__black d-flex align-items-center">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-7">
+                                            <div class="detail-box">
+                                                <h1>
+                                                    <?php echo $banner['banner_title']?><br>
+                                                    <span>
+                                                        <?php echo $banner['banner_sub_title']?>
+                                                    </span>
+                                                </h1>
+                                                <p>
+                                                    <?php echo $banner['banner_text']?>
+                                                </p>
+                                                <div class="btn-box">
+                                                    <a href="<?php echo $banner['banner_link']?>" target="_blank"
+                                                        class="btn-2">Saiba Mais</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
 
                         <?php }?>

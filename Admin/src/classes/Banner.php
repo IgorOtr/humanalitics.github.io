@@ -139,7 +139,7 @@ class Banner{
         
         if ($success) {
 
-            $_SESSION['statusUpdate'] = '<div class="alert alert-primary alert-dismissible fade show"role="alert">
+            $_SESSION['statusUpdate'] = '<div class="alert alert-primary alert-dismissible fade show" role="alert">
             Status alterado com sucesso!
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>';
@@ -147,10 +147,37 @@ class Banner{
             header('Location: http://localhost/Humanalitics/Admin/banner.php');
         } else {
 
-            $_SESSION['statusUpdate'] = '<div class="alert alert-danger" role="alert">Não foi possível alterar o status!</div>';
+            $_SESSION['statusUpdate'] = '<div class="alert alert-danger alert-dismissible fade show" role="alert">Não foi possível alterar o status!<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
 
             header('Location: http://localhost/Humanalitics/Admin/banner.php');
         }
+    }
+
+    public function DeleteBanner($id)
+    {
+        require '../db/connect.php';
+        $sql = "DELETE FROM banner WHERE id=$id";    
+
+        $del_banner = $conn->prepare($sql);
+
+        $success = $del_banner->execute();
+
+            if ($success) {
+
+                $_SESSION['statusUpdate'] = '<div class="alert alert-primary alert-dismissible fade show" role="alert">
+                Banner removido com sucesso!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>';
+
+                header('Location: http://localhost/Humanalitics/Admin/banner.php');
+
+            }else{
+
+                $_SESSION['statusUpdate'] = '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                Não foi possível remover esse banner!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>';
+            }
     }
     
 }
