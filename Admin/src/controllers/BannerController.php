@@ -2,7 +2,7 @@
 
 require "../classes/Banner.php";
 
-$action = $_GET['action'];
+$action = isset($_GET['action']) ? $_GET['action'] : '';
 
 if (isset($_POST['add_new_banner'])) {
 
@@ -16,6 +16,20 @@ if (isset($_POST['add_new_banner'])) {
 
     $class_banner = new Banner();
     $insert_banner = $class_banner->InsertBanner($title, $sub_title, $text, $link, $img, $status, $created_at); 
+
+}
+
+if (isset($_POST['edit_new_banner'])) {
+
+    $title = $_POST['banner_title'];
+    $sub_title = $_POST['banner_sub_title'];
+    $text = $_POST['banner_text'];
+    $link = $_POST['banner_link'];
+    $updated_at = date('d/m/Y');
+    $id = $_POST['banner_id'];
+
+    $class_banner = new Banner();
+    $insert_banner = $class_banner->UpdateBanner($title, $sub_title, $text, $link, $updated_at, $id); 
 
 }
 

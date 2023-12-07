@@ -103,6 +103,10 @@ child:active, :not(.btn-check)+.btn:active {
     margin-top: 100px;
 }
 
+.accordion-body {
+    background-color: #ffffff;
+}
+
 .opt__card {
     border: 2px solid #FEBE00;
     width: 60%;
@@ -132,7 +136,7 @@ child:active, :not(.btn-check)+.btn:active {
 }
 
 .form-control {
-    color: #a9a9a9 !important;
+    color: #3e3e3e !important;
 }
 
 .form-outline .form-control~.form-label {

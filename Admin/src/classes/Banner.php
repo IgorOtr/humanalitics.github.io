@@ -30,6 +30,19 @@ class Banner{
         return $data;
     }
 
+    public function GetBannerDataFromID($id)
+    {
+        require 'src/db/connect.php';
+
+        $getBanners = $conn->prepare("SELECT * FROM banner WHERE id = $id");
+
+        $getBanners->execute();
+
+        $data = $getBanners->fetchAll();
+
+        return $data;
+    }
+
     public static function UploadBannerToFolder($img)
     {
         if (!empty($img)) {
@@ -156,6 +169,7 @@ class Banner{
     public function DeleteBanner($id)
     {
         require '../db/connect.php';
+
         $sql = "DELETE FROM banner WHERE id=$id";    
 
         $del_banner = $conn->prepare($sql);
@@ -177,6 +191,38 @@ class Banner{
                 Não foi possível remover esse banner!
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>';
+            }
+    }
+
+    public function UpdateBanner($title, $sub_title, $text, $link, $updated_at, $id)
+    {
+        require '../db/connect.php';
+
+        $sql = "UPDATE banner SET 
+        banner_title=:newTitle, 
+        banner_sub_title=:subTitle, 
+        banner_text=:newText, 
+        banner_link=:banner_link,
+        updated_at=:updated_at
+        WHERE id = :id";  
+
+        $update_banner = $conn->prepare($sql);
+        $update_banner->bindParam(':newTitle', $title);
+        $update_banner->bindParam(':subTitle', $sub_title);
+        $update_banner->bindParam(':newText', $text);
+        $update_banner->bindParam(':banner_link', $link);
+        $update_banner->bindParam(':updated_at', $updated_at);
+        $update_banner->bindParam(':id', $id);
+
+        $success = $update_banner->execute();
+
+            if ($success) {
+                $_SESSION['statusUpdate'] = '<div class="alert alert-primary alert-dismissible fade show" role="alert">
+                Banner alterado com sucesso!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>';
+
+                header('Location: http://localhost/Humanalitics/Admin/banner.php');
             }
     }
     
