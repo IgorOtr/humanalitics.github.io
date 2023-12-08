@@ -172,7 +172,7 @@ $action = isset($_GET['action']) ? $_GET['action'] : '';
             ?>
 
                 <div class="col-md-6 mb-3">
-                    <div class="card w-100" style="width: 18rem; height: 650px; overflow: hidden;">
+                    <div class="card w-100" style="width: 18rem; height: 525px; overflow: hidden;">
                         <img src="./public/img/banners/<?php echo $banner['banner_image']?>" style="border-radius: 7px;"
                             class="card-img-top" alt="...">
                         <div class="card-body">

@@ -95,30 +95,43 @@ $action = isset($_GET['action']) ? $_GET['action'] : '';
             </div>
         </div>
 
-        <!-- <div class="container">
+        <div class="container">
             <div class="row">
 
-                <div class="col-md-6 mb-3">
-                    <div class="card w-100" style="width: 18rem; height: 650px; overflow: hidden;">
-                        <img src="" style="border-radius: 7px;" class="card-img-top" alt="...">
+            <?php 
+                $posts = $class_banners->GetAllPosts();
+
+                    foreach ($posts as $key => $post) {
+
+                        $delete = 'http://localhost/Humanalitics/Admin/src/controllers/BlogController.php?action=delete&pid='.$post['id'];
+                   
+            ?>
+
+                <div class="col-md-4 mb-3">
+                    <div class="card w-100" style="width: 18rem;">
+                        <img src="public/img/post/<?php echo $post['post_image']?>" style="border-radius: 7px;" class="card-img-top" alt="">
                         <div class="card-body">
-                            <h5 class="card-title"><span style="color:#febe00;"></span></h5>
-                            <p class="card-text"></p>
+                            <h5 class="card-title"><?php echo $post['post_title']?></h5>
+                            <p class="card-text"><?php echo strip_tags($post['post_content'])?></p>
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-8">
                                     <a href="" class="btn btn-primary">Editar</a>
-                                    <a href="" class="btn btn-danger">Apagar</a>
+                                    <a href="<?php echo $delete?>" class="btn btn-danger">Apagar</a>
                                 </div>
-                                <div class="col-md-6 text-end">
-                                    <a href="" class="btn btn-primary"></a>
+                                <div class="col-md-4 text-end">
+                                    <a href="" class="btn btn-primary">Block</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
+            <?php }?>
+
+                
+
             </div>
-        </div> -->
+        </div>
 
     </section>
 

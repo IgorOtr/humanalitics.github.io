@@ -1,8 +1,18 @@
 <?php
 include 'Admin/src/classes/Banner.php';
+include 'Admin/src/classes/Blog.php';
 
+$blog_class = new Blog();
 $banner_class = new Banner();
+
 $banners = $banner_class->GetAllBannersToFront();
+$posts = $blog_class->GetAllPostsToFront();
+
+// echo '<pre>';
+// var_dump($posts);
+// echo '</pre>';
+// die();
+
 ?>
 
 <!DOCTYPE html>
@@ -317,76 +327,26 @@ $banners = $banner_class->GetAllBannersToFront();
                     Confira os nossos principais conteúdos sobre o mundo do RH
                 </p>
             </div>
-            <div class="row">
-                <div class="col-md-4 col-sm-6 mx-auto ">
-                    <div class="box">
-                        <div class="img-box">
-                            <img src="images/t1.jpg" alt="">
-                        </div>
-                        <div class="detail-box">
-                            <h5>
-                                Recursos Humanos na Prática
-                            </h5>
-                            <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime iure harum fugit
-                                molestias asperiores ratione...
-                            </p>
-                            <h6 class="">
-                                <div class="btn-box">
-                                    <a href="">
-                                        Ver Mais
-                                    </a>
+            <div class="row mt-5">
+
+                <?php foreach ($posts as $key => $post) {?>
+
+                    <div class="col-md-4 col-sm-6 mx-auto ">
+                        <a href="" class="blog_link">
+                            <div class="card card__blog">
+                                <img src="Admin/public/img/post/<?php echo $post['post_image']?>" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title"><?php echo $post['post_title']?></h5>
+                                    <p class="created_at">Publicado em: <?php echo $post['created_at']?></p>
                                 </div>
-                            </h6>
-                        </div>
+                            </div>
+                        </a>
                     </div>
-                </div>
-                <div class="col-md-4 col-sm-6 mx-auto ">
-                    <div class="box">
-                        <div class="img-box">
-                            <img src="images/t1.jpg" alt="">
-                        </div>
-                        <div class="detail-box">
-                            <h5>
-                                Recursos Humanos na Prática
-                            </h5>
-                            <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime iure harum fugit
-                                molestias asperiores ratione...
-                            </p>
-                            <h6 class="">
-                                <div class="btn-box">
-                                    <a href="">
-                                        Ver Mais
-                                    </a>
-                                </div>
-                            </h6>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 mx-auto ">
-                    <div class="box">
-                        <div class="img-box">
-                            <img src="images/t1.jpg" alt="">
-                        </div>
-                        <div class="detail-box">
-                            <h5>
-                                Recursos Humanos na Prática
-                            </h5>
-                            <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime iure harum fugit
-                                molestias asperiores ratione...
-                            </p>
-                            <h6 class="">
-                                <div class="btn-box">
-                                    <a href="">
-                                        Ver Mais
-                                    </a>
-                                </div>
-                            </h6>
-                        </div>
-                    </div>
-                </div>
+
+                <?php }?>
+
+
+
             </div>
             <div class="btn-box">
                 <a href="">
@@ -521,7 +481,7 @@ $banners = $banner_class->GetAllBannersToFront();
             loop: true,
             margin: 0,
             responsiveClass: true,
-            autoplay:true,
+            autoplay: true,
             autoplaySpeed: 2500,
             responsive: {
                 0: {

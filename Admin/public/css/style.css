@@ -88,6 +88,11 @@ child:active, :not(.btn-check)+.btn:active {
     text-align: justify;
 }
 
+.card-text{
+    font-size: 14px !important;
+    color: #ffffff !important;
+}
+
 .navbar {
     background-color: #1c1c1c;
 }

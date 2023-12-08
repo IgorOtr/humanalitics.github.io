@@ -5,9 +5,31 @@ class Blog{
 
     public function GetAllPosts()
     {
-        require '../db/connect.php';
+        require 'src/db/connect.php';
 
-        echo 'GET ALL';
+        $sql = "SELECT * FROM blog";
+
+        $getPosts = $conn->prepare($sql);
+        $getPosts->execute();
+
+        $data = $getPosts->fetchAll();
+
+        return $data;
+    }
+
+    public function GetAllPostsToFront()
+    {
+        require 'Admin/src/db/connect.php';
+
+        $sql = "SELECT * FROM blog WHERE post_status = :ativo";
+
+        $getPosts = $conn->prepare($sql);
+        $getPosts->bindValue(':ativo', 'Ativo');
+        $getPosts->execute();
+
+        $data = $getPosts->fetchAll();
+
+        return $data;
     }
 
     public static function UploadPostImageToFolder($img)
@@ -104,6 +126,36 @@ class Blog{
                     }
             }
         }   
+    }
+
+    public function DeletePost($id)
+    {
+        require '../db/connect.php';
+
+        $sql = "DELETE FROM blog WHERE id = :id";
+
+        $delete = $conn->prepare($sql);
+        $delete->bindValue(':id', $id);
+
+        $success = $delete->execute();
+
+            if ($success) {
+                
+                $_SESSION['statusUpdate'] = '<div class="alert alert-primary alert-dismissible fade show" role="alert">
+                Post removido com sucesso!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>';
+                        
+                header('Location: http://localhost/Humanalitics/Admin/blog.php');
+            }else{
+
+                $_SESSION['statusUpdate'] = '<div class="alert alert-primary alert-dismissible fade show" role="alert">
+                Não foi possícel remover esse post!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>';
+                        
+                header('Location: http://localhost/Humanalitics/Admin/blog.php');
+            }
     }
     
 }
