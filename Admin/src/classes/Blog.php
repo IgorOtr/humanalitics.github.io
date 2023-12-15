@@ -1,7 +1,8 @@
 <?php
 @session_start();
 
-class Blog{
+class Blog
+{
 
     public function GetAllPosts()
     {
@@ -14,14 +15,29 @@ class Blog{
 
         $data = $getPosts->fetchAll();
 
-        return $data;
+        return $data; 
     }
 
     public function GetAllPostsToFront()
     {
         require 'Admin/src/db/connect.php';
 
-        $sql = "SELECT * FROM blog WHERE post_status = :ativo";
+        $sql = "SELECT * FROM blog WHERE post_status = :ativo LIMIT 3";
+
+        $getPosts = $conn->prepare($sql);
+        $getPosts->bindValue(':ativo', 'Ativo');
+        $getPosts->execute();
+
+        $data = $getPosts->fetchAll();
+
+        return $data;
+    }
+
+    public function GetAllPostsToBlog()
+    {
+        require '../Admin/src/db/connect.php';
+
+        $sql = "SELECT * FROM blog WHERE post_status = :ativo LIMIT 3";
 
         $getPosts = $conn->prepare($sql);
         $getPosts->bindValue(':ativo', 'Ativo');
@@ -128,34 +144,94 @@ class Blog{
         }   
     }
 
-    public function DeletePost($id)
+    public function DeletePost(string $id, string $img)
     {
         require '../db/connect.php';
 
-        $sql = "DELETE FROM blog WHERE id = :id";
+        $remove_image = unlink('../../public/img/post/'.$img);
 
-        $delete = $conn->prepare($sql);
-        $delete->bindValue(':id', $id);
+        if ($remove_image) {
 
-        $success = $delete->execute();
+            $sql = "DELETE FROM blog WHERE id = :id";
+            $delete = $conn->prepare($sql);
+            $delete->bindValue(':id', $id);
+
+            $success =   $delete->execute();
+
+                if ($success) {
+                    
+                    $_SESSION['statusUpdate'] = '<div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    Post removido com sucesso!
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>';
+                            
+                    header('Location: http://localhost/Humanalitics/Admin/blog.php');
+                }else{
+
+                    $_SESSION['statusUpdate'] = '<div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    Não foi possível remover esse post!
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>';
+                            
+                    header('Location: http://localhost/Humanalitics/Admin/blog.php');
+                }
+        } else {
+
+             $_SESSION['statusUpdate'] = '<div class="alert alert-primary alert-dismissible fade show" role="alert">
+             Não foi possível remover esse post!
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>';
+                            
+            header('Location: http://localhost/Humanalitics/Admin/blog.php');
+        }
+
+    }
+
+    public function GetContentToEdit($id)
+    {
+        require 'src/db/connect.php';
+
+        $sql = "SELECT * FROM blog WHERE id = :id";
+        $select = $conn->prepare($sql);
+        $select->bindValue(':id', $id);
+
+        $success = $select->execute();
 
             if ($success) {
-                
-                $_SESSION['statusUpdate'] = '<div class="alert alert-primary alert-dismissible fade show" role="alert">
-                Post removido com sucesso!
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>';
-                        
-                header('Location: http://localhost/Humanalitics/Admin/blog.php');
-            }else{
 
-                $_SESSION['statusUpdate'] = '<div class="alert alert-primary alert-dismissible fade show" role="alert">
-                Não foi possícel remover esse post!
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>';
-                        
-                header('Location: http://localhost/Humanalitics/Admin/blog.php');
+                $data = $select->fetchAll();
+
+                return  $data;
             }
     }
-    
+
+    public function UpdatePost($title, $content, $updated_at, $id)
+    {
+        require '../db/connect.php';
+
+        $sql = "UPDATE blog SET post_title = :title, post_content = :content, updated_at = :updated_at WHERE id = :id";
+        $update = $conn->prepare($sql);
+        $update->bindValue(':title', $title);
+        $update->bindValue(':content', $content);
+        $update->bindValue(':updated_at', $updated_at);
+        $update->bindValue(':id', $id);
+        
+            if ($update->execute()) {
+
+                $_SESSION['statusUpdate'] = '<div class="alert alert-primary alert-dismissible fade show" role="alert">
+                Post alterado com sucesso!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>';
+
+                header("Location: http://localhost/Humanalitics/Admin/blog.php");
+            }
+
+    }
+
+    // public function UpdatePostStatus($id)
+    // {
+    //     require '../db/connect.php';
+
+    //     $sql
+    // }
 }

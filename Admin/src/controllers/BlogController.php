@@ -16,9 +16,20 @@ if (isset($_POST['new_post'])) {
     $create = $classBlog->InsertPost($title, $content, $image, $status, $created_at);
 }
 
+if (isset($_POST['edit_post'])) {
+
+    $title = $_POST['post_title'];
+    $content = $_POST['post_content'];
+    $updated_at = date('d/m/Y');
+    $id = $_POST['post_id'];
+
+    $create = $classBlog->UpdatePost($title, $content, $updated_at, $id);
+}
+
 if ($action == 'delete') {
     
     $id = $_GET['pid'];
-
-    $classBlog->DeletePost($id);
+    $img = $_GET['img'];
+    
+    $classBlog->DeletePost($id, $img);
 }

@@ -327,7 +327,7 @@ $posts = $blog_class->GetAllPostsToFront();
                     Confira os nossos principais conteúdos sobre o mundo do RH
                 </p>
             </div>
-            <div class="row mt-5">
+            <div class="row mt-3">
 
                 <?php foreach ($posts as $key => $post) {?>
 

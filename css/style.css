@@ -31,15 +31,20 @@
 .card img {
   border-radius: 12px;
 }
+.card-content {
+  color: #000000a9 !important;
+  text-decoration: none !important;
+}
 
 .card:hover {
   transition: .5s;
-  transform: scale(1.1);
+  transform: scale(1.03);
   box-shadow: 0px 0px 20px #00000024;
 }
 
 .card-body {
-  padding-top: 1.25rem !important;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
   padding-left: 0rem !important;
   padding-right: 0rem !important;
 }
