@@ -4,7 +4,7 @@
             <nav class="navbar navbar-expand-lg custom_nav-container">
                 <div class="row">
                     <div class="col-md-6">
-                        <a class="navbar-brand2" href="index.html">
+                        <a class="navbar-brand2" href="<?php echo SITE_URL?>">
                             <img style="width: 250px;" src="<?php echo SITE_URL.'images/humanalitics/logoo.png'?>" alt="">
                         </a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -18,7 +18,7 @@
                         <div class="collapse navbar-collapse ml-auto" id="navbarSupportedContent">
                             <ul class="navbar-nav  ">
                                 <li class="nav-item active">
-                                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                                    <a class="nav-link" href="<?php echo SITE_URL?>">Home <span class="sr-only">(current)</span></a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="<?php echo $sobre = (@$page == 'index') ? '#sobre' : SITE_URL.'#sobre'?>"> Sobre</a>
