@@ -8,10 +8,7 @@ $banner_class = new Banner();
 $banners = $banner_class->GetAllBannersToFront();
 $posts = $blog_class->GetAllPostsToFront();
 
-// echo '<pre>';
-// var_dump($posts);
-// echo '</pre>';
-// die();
+$page = 'index';
 
 ?>
 
@@ -332,7 +329,7 @@ $posts = $blog_class->GetAllPostsToFront();
                 <?php foreach ($posts as $key => $post) {?>
 
                     <div class="col-md-4 col-sm-6 mx-auto ">
-                        <a href="" class="blog_link">
+                        <a href="<?php echo SITE_URL.'Blog/post.php?id='.$post['id']?>" class="blog_link">
                             <div class="card card__blog">
                                 <img src="Admin/public/img/post/<?php echo $post['post_image']?>" class="card-img-top" alt="...">
                                 <div class="card-body">
@@ -349,7 +346,7 @@ $posts = $blog_class->GetAllPostsToFront();
 
             </div>
             <div class="btn-box">
-                <a href="">
+                <a href="<?php echo SITE_URL.'Blog/'?>">
                     Ver Todos
                 </a>
             </div>

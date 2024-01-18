@@ -48,6 +48,21 @@ class Blog
         return $data;
     }
 
+    public function GetPostsFromId($id)
+    {
+        require '../Admin/src/db/connect.php';
+
+        $sql = "SELECT * FROM blog WHERE id = :id";
+
+        $getPosts = $conn->prepare($sql);
+        $getPosts->bindValue(':id', $id);
+        $getPosts->execute();
+
+        $data = $getPosts->fetchAll();
+
+        return $data;
+    }
+
     public static function UploadPostImageToFolder($img)
     {
         if (!empty($img)) {

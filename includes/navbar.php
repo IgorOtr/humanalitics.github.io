@@ -5,7 +5,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <a class="navbar-brand2" href="index.html">
-                            <img style="width: 250px;" src="http://localhost/Humanalitics/images/humanalitics/logoo.png" alt="">
+                            <img style="width: 250px;" src="<?php echo SITE_URL.'images/humanalitics/logoo.png'?>" alt="">
                         </a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse"
                             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -21,19 +21,19 @@
                                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#sobre"> Sobre</a>
+                                    <a class="nav-link" href="<?php echo $sobre = (@$page == 'index') ? '#sobre' : SITE_URL.'#sobre'?>"> Sobre</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#difference"> Diferenciais </a>
+                                    <a class="nav-link" href="<?php echo $difference = (@$page == 'index') ? '#difference' : SITE_URL.'#difference'?>"> Diferenciais </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#services"> Serviços </a>
+                                    <a class="nav-link" href="<?php echo $servico = (@$page == 'index') ? '#services' : SITE_URL.'#services'?>"> Serviços </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#blog">Blog</a>
+                                    <a class="nav-link" href="<?php echo $blog = (@$page == 'index') ? '#blog' : SITE_URL.'#blog'?>">Blog</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#contato">Contato</a>
+                                    <a class="nav-link" href="<?php echo $contato = (@$page == 'index') ? '#contato' : SITE_URL.'#contato'?>">Contato</a>
                                 </li>
                             </ul>
                         </div>

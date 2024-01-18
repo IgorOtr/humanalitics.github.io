@@ -31,11 +31,11 @@ include '../includes/head.php';
                         <?php for ($i = 0; $i < count($posts); $i++){?>
 
                         <div class="col-md-12 mb-5 mt-3">
-                            <a href="" class="card-link">
+                            <a href="<?php echo SITE_URL.'Blog/post.php?id='.$posts[$i]['id']?>" class="card-link">
                                 <div class="card mb-3">
-                                    <img src="http://localhost/Humanalitics/Admin/public/img/post/<?php echo $posts[$i]['post_image']?>"
+                                    <img src="<?php echo SITE_URL.'Admin/public/img/post/'.$posts[$i]['post_image']?>"
                                         class="card-img-top">
-                                    <div class="card-body">
+                                    <div class="card-body">  
                                         <h5 class="card-title" style="color: #FEBE00;">
                                             <?php echo $posts[$i]['post_title']?></h5>
                                         <p class="card-content">
@@ -56,7 +56,7 @@ include '../includes/head.php';
                 <div class="col-md-4">
                     <div class="row">
                         <div class="col">
-                            <h5>Publicações em Destaque</h5>
+                            <h5>Posts em Destaque</h5>
                         </div>
                     </div>
                     <div class="row">
