@@ -32,16 +32,16 @@ include '../includes/head.php';
                         <div class="col-md-12 mb-5 mt-3">
                             <a class="card-link">
                                 <div class="mb-3">
+                                    <h1 class="card-title mb-4" style="color: #FEBE00;">
+                                        <?php echo $uniq_post[$i]['post_title']?></h1>
                                     <img src="<?php echo SITE_URL.'Admin/public/img/post/'.$uniq_post[$i]['post_image']?>"
                                         class="card-img-top">
+                                    <p class="card-text"><small class="text-muted">Publicado em:
+                                            <?php echo $uniq_post[$i]['created_at']?></small>
+                                    </p>
                                     <div class="card-body">
-                                        <h5 class="card-title" style="color: #FEBE00;">
-                                            <?php echo $uniq_post[$i]['post_title']?></h5>
                                         <p class="card-content">
                                             <?php echo $uniq_post[$i]['post_content']?>
-                                        </p>
-                                        <p class="card-text"><small class="text-muted">Publicado em:
-                                                <?php echo $uniq_post[$i]['created_at']?></small>
                                         </p>
                                     </div>
                                 </div>
