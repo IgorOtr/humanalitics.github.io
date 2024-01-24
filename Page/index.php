@@ -8,10 +8,12 @@
     <title>Humanalitics - Pages</title>
 
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
 
         body {
             height: 100vh;
             background-color: #1c1c1c;
+            background: linear-gradient(to bottom, #232323 50%, #febe00);
         }
 
         .container {
@@ -19,8 +21,8 @@
         }
 
         h1, h2, h3, h4, h5, h6 {
-            font-weight: 600;
-            font-family: Poppins, sans-serif;
+            font-weight: 800;
+            font-family: Montserrat, sans-serif;
             color: #ffffff;
             margin: 0px;
         }
@@ -34,21 +36,61 @@
         }
 
         .btn-success:hover {
-            background-color: #007900;
+            background-color: #00a700;
         }
 
         .btn-secondary {
-            background-color: #ffffff00;
+            background-color: #737373;
+            color: #ffffff;
             padding-left: 30px;
             padding-right: 30px;
             padding-bottom: 8px;
             padding-top: 8px;
+            border: none;
+            transition: .3s;
+        }
+
+        .btn-secondary:hover {
+            transition: .3s;
+            background-color: #2f2f2f;
+            transform: scale(1.05);
+        }
+
+        .retangle {
+            background-color: #febe00;
+            position: absolute;
+            left: 230px;
+            width: 160px;
+            height: 100vh;
+        }
+
+        .card {
+            padding: 125px;
+            box-shadow: 12px 12px 20px #0000009c;
+        }
+
+        .card h1 {
+            color: #1c1c1c;
+        }
+
+        @media only screen and (max-width: 768px) {
+
+            .retangle {
+                display: none;
+            }
+
+            .card {
+                padding: 80px;
+            }
+            
         }
 
     </style>
 </head>
 
 <body>
+
+        <div class="retangle"></div>
 
         <div class="container">
 
@@ -68,7 +110,7 @@
                 <div class="col-md-3 text-center mb-3">
                 </div>
                 <div class="col-md-6 text-center mb-3">
-                    <div class="card"></div>
+                    <div class="card"><h1>VÍDEO AQUI</h1></div>
                 </div>
                 <div class="col-md-3 text-center mb-3">
                 </div>
