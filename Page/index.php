@@ -120,7 +120,7 @@
                 <div class="col-md-4 text-center mb-3">
                 </div>
                 <div class="col-md-4 text-center mb-3">
-                    <a href="" target="_blank" class="btn btn-success"><h5>QUERO UM ORÇAMENTO</h5></a>
+                    <a href="https://w.app/Humanalitics" target="_blank" class="btn btn-success"><h5>QUERO UM ORÇAMENTO</h5></a>
                 </div>
                 <div class="col-md-4 text-center mb-3">
                 </div>
@@ -130,7 +130,7 @@
                 <div class="col-md-4 text-center mb-3">
                 </div>
                 <div class="col-md-4 text-center mb-3">
-                    <a href="" target="_blank" class="btn btn-secondary"><h5>FALAR COM A EQUIPE</h5></a>
+                    <a href="https://w.app/Humanalitics" target="_blank" class="btn btn-secondary"><h5>FALAR COM A EQUIPE</h5></a>
                 </div>
                 <div class="col-md-4 text-center mb-3">
                 </div>
