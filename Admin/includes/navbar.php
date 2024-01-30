@@ -24,6 +24,12 @@
                     <li class="nav-item">
                         <a class="nav-link" target="_blank" href="http://localhost/Humanalitics/Admin/banner.php">Banners</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" target="_blank" href="http://localhost/Humanalitics/Admin/jobs.php">Vagas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" target="_blank" href="http://localhost/Humanalitics/Admin/files.php">Currículos</a>
+                    </li>
                     <!-- <li class="nav-item">
                         <a class="nav-link" href="#">Projects</a>
                     </li> -->

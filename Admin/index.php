@@ -31,8 +31,8 @@ include './includes/head.php';
     <section class="options-section">
         <div class="container">
             <div class="row">
-                <div class="col-md-6 d-flex justify-content-center align-items-center">
-                    <div class="opt__card p-5" onclick="redirectToBanner()">
+                <div class="col-md-3 d-flex justify-content-center align-items-center">
+                    <div class="opt__card w-100 p-5" onclick="redirectToBanner()">
                         <div class="opt__card__header text-center">
                             <i class='bx bx-image-add'></i>
                         </div>
@@ -41,13 +41,33 @@ include './includes/head.php';
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 d-flex justify-content-center align-items-center">
-                    <div class="opt__card p-5" onclick="redirectToBlog()">
+                <div class="col-md-3 d-flex justify-content-center align-items-center">
+                    <div class="opt__card w-100 p-5" onclick="redirectToBlog()">
                         <div class="opt__card__header text-center">
                             <i class='bx bx-edit-alt'></i>
                         </div>
                         <div class="opt__card__body text-center">
                             <h3>Blog</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 d-flex justify-content-center align-items-center">
+                    <div class="opt__card w-100 p-5" onclick="redirectToJobs()">
+                        <div class="opt__card__header text-center">
+                            <i class='bx bxs-briefcase-alt-2' ></i>
+                        </div>
+                        <div class="opt__card__body text-center">
+                            <h3>Vagas</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 d-flex justify-content-center align-items-center">
+                    <div class="opt__card w-100 p-5" onclick="redirectToFiles()">
+                        <div class="opt__card__header text-center">
+                            <i class='bx bxs-file-pdf' ></i>
+                        </div>
+                        <div class="opt__card__body text-center">
+                            <h3>Currículos</h3>
                         </div>
                     </div>
                 </div>
