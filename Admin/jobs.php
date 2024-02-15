@@ -56,20 +56,25 @@ $dataToEdit = $class_jobs->getJobToEdit($job_id);
                     <div id="flush-collapseOne" class="accordion-collapse collapse show"
                         aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
-                            <form class="row g-3" method="post" action="src/controllers/BannerController.php">
+                            <form class="row g-3" method="post" action="src/controllers/JobController.php">
                                 <div class="col-md-6">
                                     <label for="inputEmail4" style="color: #000000;" class="form-label">Título
                                         <small>(obrigatório)</small></label>
                                     <input type="text" class="form-control" id="inputEmail4"
-                                        placeholder="Adicione um Título ao Bannner:" name="banner_title"
+                                        placeholder="Adicione um Título ao Bannner:" name="job_title"
                                         value="<?php echo $jobToEdit['job_title']?>">
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inputPassword4" style="color: #000000;" class="form-label">Sub-título
                                         <small>(opcional)</small></label>
                                     <input type="text" class="form-control" id="inputPassword4"
-                                        placeholder="Adicione um sub-título ao Bannner:" name="banner_sub_title"
+                                        placeholder="Adicione um sub-título ao Bannner:" name="job_subtitle"
                                         value="<?php echo $jobToEdit['job_subtitle']?>">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="inputPassword4" style="color: #000000;" class="form-label">Data de encerramento: </label>
+                                    <input type="date" class="form-control" id="inputPassword4"name="limit_date"
+                                        value="<?php echo $jobToEdit['job_limit_date']?>">
                                 </div>
                                 <div class="col-12">
                                     <label for="exampleFormControlTextarea1" style="color: #000000;"
@@ -77,10 +82,10 @@ $dataToEdit = $class_jobs->getJobToEdit($job_id);
                                         <small>(obrigatório)</small></label>
                                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="12"
                                         placeholder="Adicione um texto ao Bannner:"
-                                        name="banner_text"><?php echo $jobToEdit['job_description']?></textarea>
+                                        name="job_description"><?php echo $jobToEdit['job_description']?></textarea>
                                 </div>
                                 <div class="col-12">
-                                    <input type="hidden" name="banner_id" value="<?php echo $jobToEdit['id']?>">
+                                    <input type="hidden" name="job_id" value="<?php echo $jobToEdit['id']?>">
                                     <button type="submit" name="edit_new_banner" class="btn btn-primary w-100">Alterar
                                         Dados</button>
                                 </div>
@@ -167,7 +172,7 @@ $dataToEdit = $class_jobs->getJobToEdit($job_id);
                 
                 $status = ($job['job_status'] == 'ativo') ? '<i style="font-size: 16px;" class="bx bx-block"></i>' : '<i style="font-size: 16px;" class="bx bx-check-circle"></i>';
                 $tooltip = ($job['job_status'] == 'ativo') ? 'data-bs-toggle="tooltip" data-bs-placement="top" title="Bloquear"' : 'data-bs-toggle="tooltip" data-bs-placement="top" title="Desbloquear"';
-                $link = ($job['job_status'] == 'ativo') ? 'http://localhost/Humanalitics/Admin/src/controllers/BannerController.php?action=ed_stts&b_id='.$job['id'].'&set_stts=bloq' : 'http://localhost/Humanalitics/Admin/src/controllers/BannerController.php?action=ed_stts&b_id='.$job['id'].'&set_stts=ativo';
+                $link = ($job['job_status'] == 'ativo') ? 'http://localhost/Humanalitics/Admin/src/controllers/JobController.php?action=ed_stts&job_id='.$job['id'].'&set_stts=bloq' : 'http://localhost/Humanalitics/Admin/src/controllers/JobController.php?action=ed_stts&job_id='.$job['id'].'&set_stts=ativo';
                 $link_del = 'http://localhost/Humanalitics/Admin/src/controllers/JobController.php?action=del_job&job_id='.$job['id'];
                 $link_ed = 'http://localhost/Humanalitics/Admin/jobs.php?action=ed_job&job_id='.$job['id'];
             ?>
@@ -195,7 +200,7 @@ $dataToEdit = $class_jobs->getJobToEdit($job_id);
                 <div class="col-md-4 mb-3">
                     <div class="card w-100" style="">
                         <div class="card_image"
-                            style="background-image: url(public/img/jobs/<?php echo $job['job_image']?>); background-size: cover; background-repeat: no-repeat; padding: 205px;">
+                            style="background-image: url(public/img/jobs/<?php echo $job['job_image']?>); background-size: cover; background-repeat: no-repeat; padding: 205px; border-radius: 6px;">
                         </div>
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $job['job_title']?> <br>

@@ -159,6 +159,8 @@ class Job{
     public function updateJob()
     {
         require '../db/connect.php';
+
+        
     }
 
     public function deleteJob($id)
@@ -194,6 +196,31 @@ class Job{
                 echo 'Não foi possível remover essa vaga no momento!';
 
             }
+    }
+
+    public function UpdateStatus(string $id, string $status)
+    {
+        require '../db/connect.php';
+
+        $updateStatus = $conn->prepare("UPDATE jobs SET job_status = :newStatus WHERE id = :id");
+        $updateStatus->bindValue(':newStatus', $status);
+        $updateStatus->bindValue(':id', $id);
+        $success = $updateStatus->execute();
+        
+        if ($success) {
+
+            $_SESSION['statusUpdate'] = '<div class="alert alert-primary alert-dismissible fade show" role="alert">
+            Status alterado com sucesso!
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>';
+
+            header('Location: '.SITE_URL.'Admin/jobs.php');
+        } else {
+
+            $_SESSION['statusUpdate'] = '<div class="alert alert-danger alert-dismissible fade show" role="alert">Não foi possível alterar o status!<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
+
+            header('Location: '.SITE_URL.'Admin/jobs.php');
+        }
     }
 
 }
