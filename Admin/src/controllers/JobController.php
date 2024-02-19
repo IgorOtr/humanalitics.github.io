@@ -10,6 +10,7 @@ if (isset($_POST['add_new_job'])) {
     $title = $_POST['job_title'];
     $sub_title = $_POST['job_sub_title'];
     $job_description = $_POST['job_description'];
+    $job_skills = $_POST['job_skills'];
     $job_image = $_FILES['job_image'];
     $limit_date = $_POST['limit_date'];
     $status = 'ativo';
@@ -17,7 +18,7 @@ if (isset($_POST['add_new_job'])) {
     $limit_date = $limit_date[2].'/'.$limit_date[1].'/'.$limit_date[0];
 
 
-    $addJob = $classJob->addNewJob($title, $sub_title, $job_description, $job_image, $limit_date, $status);
+    $addJob = $classJob->addNewJob($title, $sub_title, $job_description, $job_skills, $job_image, $limit_date, $status);
 }
 
 if (isset($_POST['edit_new_banner'])) {
@@ -30,6 +31,8 @@ if (isset($_POST['edit_new_banner'])) {
     $limit_date = $_POST['limit_date'];
     $limit_date = explode('-',$limit_date);
     $limit_date = $limit_date[2].'/'.$limit_date[1].'/'.$limit_date[0];
+
+    $edit_job = $classJob->EditJob($title, $sub_title, $job_description, $limit_date, $id);
 
 }
 

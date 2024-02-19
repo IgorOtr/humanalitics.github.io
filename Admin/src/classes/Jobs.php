@@ -23,6 +23,24 @@ class Job{
 
     }
 
+    public function getJobsToFront()
+    {
+
+        require 'Admin/src/db/connect.php';
+
+        $select = $conn->prepare("SELECT * FROM jobs WHERE job_status != :bloq");
+        $select->bindValue(':bloq','bloq');
+
+        $success = $select->execute();
+
+            if ($success) {
+                    
+                $data = $select->fetchAll();
+
+                return $data;
+            }
+    }
+
     public function getJobToEdit($id)
     {
 
@@ -62,10 +80,6 @@ class Job{
 
                 return $data;
             }
-
-    }
-    public function getAllActiveJobs()
-    {
 
     }
 
@@ -122,7 +136,7 @@ class Job{
     }
 
 
-    public function addNewJob($title, $sub_title, $description, $image, $limit_date, $status)
+    public function addNewJob($title, $sub_title, $description, $skills, $image, $limit_date, $status)
     {
 
         require '../db/connect.php';
@@ -131,12 +145,13 @@ class Job{
 
             if ($uploadImage[0] == true) {
                 
-                $sql = "INSERT INTO jobs (job_title, job_subtitle, job_description, job_limit_date, job_image, job_status) VALUES (:_title, :_subtitle, :_description, :_limit_date, :_image, :_status)";
+                $sql = "INSERT INTO jobs (job_title, job_subtitle, job_description, job_skills, job_limit_date, job_image, job_status) VALUES (:_title, :_subtitle, :_description, :_skills, :_limit_date, :_image, :_status)";
 
                 $add = $conn->prepare($sql);
                 $add->bindValue(':_title', $title);
                 $add->bindValue(':_subtitle', $sub_title);
                 $add->bindValue(':_description', $description); 
+                $add->bindValue(':_skills', $skills); 
                 $add->bindValue(':_limit_date', $limit_date);
                 $add->bindValue(':_image', $uploadImage[1]);
                 $add->bindValue(':_status', $status);
@@ -221,6 +236,35 @@ class Job{
 
             header('Location: '.SITE_URL.'Admin/jobs.php');
         }
+    }
+
+    public function EditJob($title, $subtitle, $description, $limit_date, $id) 
+    {
+
+        require '../db/connect.php';
+
+        $EditJob = $conn->prepare("UPDATE jobs SET job_title = :_title, job_subtitle = :_subtitle, job_description = :_desc, job_limit_date = :_limit_date WHERE id = :_id");
+        $EditJob->bindValue(':_title', $title);
+        $EditJob->bindValue(':_subtitle', $subtitle);
+        $EditJob->bindValue(':_desc', $description);
+        $EditJob->bindValue(':_limit_date', $limit_date);
+        $EditJob->bindValue(':_id',$id);
+
+            if ($EditJob->execute()) {
+
+                    $_SESSION['statusUpdate'] = '<div class="alert alert-primary alert-dismissible fade show" role="alert">
+                Informações alteradas com sucesso!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>';
+
+                header('Location: '.SITE_URL.'Admin/jobs.php');
+            }else{
+
+                $_SESSION['statusUpdate'] = '<div class="alert alert-danger alert-dismissible fade show" role="alert">Não foi possível alterar as informações da vaga!<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
+
+                header('Location: '.SITE_URL.'Admin/jobs.php');
+            }
+
     }
 
 }

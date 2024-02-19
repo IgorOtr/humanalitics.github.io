@@ -40,7 +40,11 @@ $dataToEdit = $class_jobs->getJobToEdit($job_id);
         <?php if ($action === 'ed_job') {
             
             foreach ($dataToEdit as $jobToEdit) {
-                # code...
+
+
+                $limit_date = $jobToEdit['job_limit_date'];
+                $limit_date = explode('/',$limit_date);
+                $limit_date = $limit_date[2].'-'.$limit_date[1].'-'.$limit_date[0];
             }
         ?>
 
@@ -72,9 +76,10 @@ $dataToEdit = $class_jobs->getJobToEdit($job_id);
                                         value="<?php echo $jobToEdit['job_subtitle']?>">
                                 </div>
                                 <div class="col-md-12">
-                                    <label for="inputPassword4" style="color: #000000;" class="form-label">Data de encerramento: </label>
-                                    <input type="date" class="form-control" id="inputPassword4"name="limit_date"
-                                        value="<?php echo $jobToEdit['job_limit_date']?>">
+                                    <label for="inputPassword4" style="color: #000000;" class="form-label">Data de
+                                        encerramento: </label>
+                                    <input type="date" class="form-control" id="inputPassword4" name="limit_date"
+                                        value="<?php echo $limit_date?>">
                                 </div>
                                 <div class="col-12">
                                     <label for="exampleFormControlTextarea1" style="color: #000000;"
@@ -131,6 +136,14 @@ $dataToEdit = $class_jobs->getJobToEdit($job_id);
                                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
                                         placeholder="Adicione um texto á Vaga:" name="job_description"></textarea>
                                 </div>
+
+                                <div class="col-12">
+                                    <label for="inputEmail4" style="color: #000000;" class="form-label">Competências para esta vaga <small>(Separe por " ; ")</small></label>
+                                    <input type="text" class="form-control" id="inputEmail4"
+                                        placeholder="Ex.: Excel Avançado;Experiêcia em Gestão de Pessoas" name="job_skills">
+                                        <span style="color: red; font-size: 14px;">Máximo de 4 competências</span>
+                                </div>
+
                                 <div class="col-md-6">
                                     <label for="formFile" class="form-label" style="color: #000000;">Escolha uma Imagem
                                         para esta vaga: <small>(obrigatório)</small></label>
@@ -177,8 +190,8 @@ $dataToEdit = $class_jobs->getJobToEdit($job_id);
                 $link_ed = 'http://localhost/Humanalitics/Admin/jobs.php?action=ed_job&job_id='.$job['id'];
             ?>
                 <!-- Modal -->
-                <div class="modal fade" id="exampleModal<?php echo $job['id']?>" tabindex="-1" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
+                <div class="modal fade" id="exampleModal<?php echo $job['id']?>" tabindex="-1"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -190,7 +203,8 @@ $dataToEdit = $class_jobs->getJobToEdit($job_id);
                                 Deseja remover esta vaga?
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                <button type="button" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">Cancelar</button>
                                 <a href="<?php echo $link_del;?>" class="btn btn-danger">Remover</a>
                             </div>
                         </div>
@@ -213,7 +227,9 @@ $dataToEdit = $class_jobs->getJobToEdit($job_id);
                                 <div class="col-md-6">
                                     <a href="<?php echo $link_ed;?>" class="btn btn-primary"><i style="font-size: 16px;"
                                             class='bx bx-edit'></i></a>
-                                    <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $job['id']?>" class="btn btn-danger"><i style="font-size: 16px;" class='bx bx-trash'></i></button>
+                                    <button type="button" data-bs-toggle="modal"
+                                        data-bs-target="#exampleModal<?php echo $job['id']?>" class="btn btn-danger"><i
+                                            style="font-size: 16px;" class='bx bx-trash'></i></button>
                                 </div>
                                 <div class="col-md-6 text-end">
                                     <a href="<?php echo $link;?>" class="btn btn-primary"

@@ -11,11 +11,12 @@ $posts = $blog_class->GetAllPostsToFront();
 $page = 'index';
 
 ?>
-    <?php include 'includes/head.php'?>
+<?php include 'includes/head.php'?>
+
 <body>
     <div class="hero_area">
-        
-    <?php include 'includes/navbar.php'?>
+
+        <?php include 'includes/navbar.php'?>
         <!-- end header section -->
         <!-- slider section -->
         <section class=" slider_section ">
@@ -238,17 +239,18 @@ $page = 'index';
 
                 <?php foreach ($posts as $key => $post) {?>
 
-                    <div class="col-md-4 col-sm-6 mx-auto ">
-                        <a href="<?php echo SITE_URL.'Blog/post.php?id='.$post['id']?>" class="blog_link">
-                            <div class="card card__blog">
-                                <img src="Admin/public/img/post/<?php echo $post['post_image']?>" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title"><?php echo $post['post_title']?></h5>
-                                    <p class="created_at">Publicado em: <?php echo $post['created_at']?></p>
-                                </div>
+                <div class="col-md-4 col-sm-6 mx-auto ">
+                    <a href="<?php echo SITE_URL.'Blog/post.php?id='.$post['id']?>" class="blog_link">
+                        <div class="card card__blog">
+                            <img src="Admin/public/img/post/<?php echo $post['post_image']?>" class="card-img-top"
+                                alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title"><?php echo $post['post_title']?></h5>
+                                <p class="created_at">Publicado em: <?php echo $post['created_at']?></p>
                             </div>
-                        </a>
-                    </div>
+                        </div>
+                    </a>
+                </div>
 
                 <?php }?>
 
@@ -348,6 +350,12 @@ $page = 'index';
                         </h5>
                     </div>
                     <div class="info_contact">
+                        <a href="trabalhe-conosco.php" class="">
+                            <i class='bx bxs-circle'></i>
+                            <span>
+                                Trabalhe Conosco
+                            </span>
+                        </a>
                         <a href="" class="">
                             <i class="fa fa-phone" aria-hidden="true"></i>
                             <span>
