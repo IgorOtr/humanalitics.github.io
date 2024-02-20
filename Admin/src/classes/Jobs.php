@@ -23,10 +23,47 @@ class Job{
 
     }
 
+    public function getJobTitleBtId($id)
+    {
+        require 'src/db/connect.php';
+
+        $sql = "SELECT job_title FROM jobs WHERE id = :_id";
+
+        $select = $conn->prepare($sql);
+        $select->bindValue(':_id', $id);
+
+        $success = $select->execute();
+
+            if ($success) {
+                
+                $data = $select->fetchAll();
+
+                return $data;
+            }
+    }
+
     public function getJobsToFront()
     {
 
         require 'Admin/src/db/connect.php';
+
+        $select = $conn->prepare("SELECT * FROM jobs WHERE job_status != :bloq");
+        $select->bindValue(':bloq','bloq');
+
+        $success = $select->execute();
+
+            if ($success) {
+                    
+                $data = $select->fetchAll();
+
+                return $data;
+            }
+    }
+
+    public function getJobsToAdmin()
+    {
+
+        require 'src/db/connect.php';
 
         $select = $conn->prepare("SELECT * FROM jobs WHERE job_status != :bloq");
         $select->bindValue(':bloq','bloq');
@@ -59,7 +96,6 @@ class Job{
 
                 return $data;
             }
-
     }
 
     public static function getImageToUnlink($id)

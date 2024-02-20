@@ -351,7 +351,7 @@ $page = 'index';
                     </div>
                     <div class="info_contact">
                         <a href="trabalhe-conosco.php" class="">
-                            <i class='bx bxs-circle'></i>
+                            <i class='bx bx-briefcase'></i>
                             <span>
                                 Trabalhe Conosco
                             </span>

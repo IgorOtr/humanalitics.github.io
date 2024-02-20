@@ -2,7 +2,24 @@
 
 class Candidate {
 
-    public static function UploadFileToFolder($file)
+    public function getCantidatesByJob($id)
+    {
+        require 'src/db/connect.php';
+
+        $sql = "SELECT * FROM candidates WHERE job_id = :_id";
+        $select = $conn->prepare($sql);
+        $select->bindValue(':_id', $id);
+
+        $success = $select->execute();
+
+            if ($success) {
+
+                $data = $select->fetchAll();
+                return $data;
+            }
+    }
+
+    public static function UploadFileToFolder($file, $nome)
     {
         if (!empty($file)) {
     
@@ -22,7 +39,7 @@ class Candidate {
                 // Cria um nome único para esta imagem
                 // Evita que duplique as imagens no servidor.
                 // Evita nomes com acentos, espaços e caracteres não alfanuméricos
-                $newName = 'candidate_'.uniqid(time()) . '.' . $extensao;
+                $newName = 'curriculo de ' . $nome . '.' . $extensao;
     
                 // Concatena a pasta com o nome
                 $destino = '../../candidates/'.$newName;

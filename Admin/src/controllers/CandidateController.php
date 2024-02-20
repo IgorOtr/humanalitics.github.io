@@ -20,7 +20,7 @@ if (isset($_POST['apply'])) {
     $job_id = $_POST['job-id'];
     $file = $_FILES['candidate-file'];
 
-        $UploadFileToFolder = Candidate::UploadFileToFolder($file);
+        $UploadFileToFolder = Candidate::UploadFileToFolder($file,  $name);
 
             if ($UploadFileToFolder[0]) {
 

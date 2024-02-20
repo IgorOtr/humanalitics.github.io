@@ -78,8 +78,6 @@ $jobs = $jobs_class->getJobsToFront();
                             </div>
                         </div>
                     </div>
-
-
                 </div>
 
                 <div class="modal fade" id="exampleModal<?php echo $job['id']?>" tabindex="-1"
@@ -93,111 +91,128 @@ $jobs = $jobs_class->getJobsToFront();
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form action="<?php echo SITE_URL.'Admin/src/controllers/CandidateController.php'?>" method="POST" enctype="multipart/form-data">
+                                <form action="<?php echo SITE_URL.'Admin/src/controllers/CandidateController.php'?>"
+                                    method="POST" enctype="multipart/form-data">
 
-                                    <div class="file-input">
-                                    <label for="exampleFormControlInput1" class="form-label" style="color: red; font-size: 14px;">Apenas arquivos em PDF</label>
-                                        <input type="file" name="candidate-file" id="file-input"
-                                            class="file-input__input" />
-                                        <label class="file-input__label" for="file-input">
-                                            <svg aria-hidden="true" focusable="false" data-prefix="fas"
-                                                data-icon="upload" class="svg-inline--fa fa-upload fa-w-16" role="img"
-                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                                                <path fill="currentColor"
-                                                    d="M296 384h-80c-13.3 0-24-10.7-24-24V192h-87.7c-17.8 0-26.7-21.5-14.1-34.1L242.3 5.7c7.5-7.5 19.8-7.5 27.3 0l152.2 152.2c12.6 12.6 3.7 34.1-14.1 34.1H320v168c0 13.3-10.7 24-24 24zm216-8v112c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V376c0-13.3 10.7-24 24-24h136v8c0 30.9 25.1 56 56 56h80c30.9 0 56-25.1 56-56v-8h136c13.3 0 24 10.7 24 24zm-124 88c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20zm64 0c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20z">
-                                                </path>
-                                            </svg>
-                                            <span>Anexe seu currículo aqui</span></label>
-                                    </div>
+                                    <div class="personalData">
+                                        <div class="file-input">
+                                            <label for="exampleFormControlInput1" class="form-label"
+                                                style="color: red; font-size: 14px;">Apenas arquivos em PDF</label>
+                                            <input required type="file" name="candidate-file" id="file-input"
+                                                class="file-input__input" />
+                                            <label class="file-input__label" for="file-input">
+                                                <svg aria-hidden="true" focusable="false" data-prefix="fas"
+                                                    data-icon="upload" class="svg-inline--fa fa-upload fa-w-16"
+                                                    role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                                    <path fill="currentColor"
+                                                        d="M296 384h-80c-13.3 0-24-10.7-24-24V192h-87.7c-17.8 0-26.7-21.5-14.1-34.1L242.3 5.7c7.5-7.5 19.8-7.5 27.3 0l152.2 152.2c12.6 12.6 3.7 34.1-14.1 34.1H320v168c0 13.3-10.7 24-24 24zm216-8v112c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V376c0-13.3 10.7-24 24-24h136v8c0 30.9 25.1 56 56 56h80c30.9 0 56-25.1 56-56v-8h136c13.3 0 24 10.7 24 24zm-124 88c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20zm64 0c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20z">
+                                                    </path>
+                                                </svg>
+                                                <span>Anexe seu currículo aqui</span></label>
+                                        </div>
 
-                                    <div class="mb-3">
-                                        <label for="exampleFormControlInput1" class="form-label">Nome Completo:</label>
-                                        <input type="text" name="candidate-name" class="form-control" id="exampleFormControlInput1"
-                                            placeholder="Seu nome:">
-                                    </div>
+                                        <div class="mb-3">
+                                            <label for="exampleFormControlInput1" class="form-label">Nome
+                                                Completo:</label>
+                                            <input required type="text" name="candidate-name" class="form-control"
+                                                id="exampleFormControlInput1" placeholder="Seu nome:">
+                                        </div>
 
-                                    <div class="mb-3">
-                                        <label for="exampleFormControlInput1" class="form-label">Endereço de
-                                            E-mail:</label>
-                                        <input type="email" name="candidate-email" class="form-control" id="exampleFormControlInput1"
-                                            placeholder="Seu e-mail:">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="exampleFormControlInput1" class="form-label">Telefone para
-                                            contato:</label>
-                                        <input type="text" name="candidate-phone" class="form-control" id="exampleFormControlInput1"
-                                            placeholder="Seu Telefone:">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="exampleFormControlInput1" class="form-label">Data de
-                                            Nascimento:</label>
-                                        <input type="date" name="candidate-date" class="form-control" id="exampleFormControlInput1"
-                                            placeholder="Sua data de nascimento:">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="exampleFormControlInput1" class="form-label">Endereço:</label>
-                                        <input type="text" name="candidate-adress" class="form-control" id="exampleFormControlInput1"
-                                            placeholder="Seu endereço:">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="exampleFormControlInput1" class="form-label">Cidade:</label>
-                                        <input type="text" name="candidate-city" class="form-control" id="exampleFormControlInput1"
-                                            placeholder="Cidade onde mora:">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="exampleFormControlInput1" class="form-label">Escolaridade:</label>
-                                        <select name="candidate-school" class="form-select" aria-label="Default select example">
-                                            <option selected>Selecionar</option>
-                                            <option value="EF">Ensino Fundamental</option>
-                                            <option value="EMI">Ensino Médio Incompleto</option>
-                                            <option value="EMC">Ensino Médio Completo</option>
-                                            <option value="ESI">Ensino Superior Incompleto</option>
-                                            <option value="ESC">Ensino Superior Completo</option>
-                                            <option value="CT">Curso Técnico</option>
-                                        </select>
-                                    </div>
+                                        <div class="mb-3">
+                                            <label for="exampleFormControlInput1" class="form-label">Endereço de
+                                                E-mail:</label>
+                                            <input required type="email" name="candidate-email" class="form-control"
+                                                id="exampleFormControlInput1" placeholder="Seu e-mail:">
+                                        </div>
 
-                                    <div class="mb-3">
-                                        <label for="exampleFormControlInput1" class="form-label">Conte um pouco sobre
-                                            você: </label>
-                                        <textarea name="candidate-resume" class="form-control" placeholder="Como você descreve sua personalidade?" id="floatingTextarea2" rows="6"></textarea>
-                                    </div>
+                                        <div class="mb-3">
+                                            <label for="exampleFormControlInput1" class="form-label">Telefone para
+                                                contato:</label>
+                                            <input required type="text" name="candidate-phone" class="form-control"
+                                                id="exampleFormControlInput1" placeholder="Seu Telefone:">
+                                        </div>
 
-                                    <div class="mb-3">
-                                        <label for="exampleFormControlInput1" class="form-label">Por que você está
-                                            procurando um novo emprego?</label>
-                                        <textarea name="candidate-ask" class="form-control" placeholder="Escreva aqui:"
-                                            id="floatingTextarea2" rows="6"></textarea>
-                                    </div>
+                                        <div class="mb-3">
+                                            <label for="exampleFormControlInput1" class="form-label">Data de
+                                                Nascimento:</label>
+                                            <input required type="date" name="candidate-date" class="form-control"
+                                                id="exampleFormControlInput1" placeholder="Sua data de nascimento:">
+                                        </div>
 
-                                    <div class="mb-3">
-                                        <label for="exampleFormControlInput1" class="form-label">Fale sobre seu
-                                            histórico profissional:</label>
-                                        <textarea name="candidate-history" class="form-control" placeholder="Escreva aqui:"
-                                            id="floatingTextarea2" rows="6"></textarea>
-                                    </div>
+                                        <div class="mb-3">
+                                            <label for="exampleFormControlInput1" class="form-label">Endereço:</label>
+                                            <input required type="text" name="candidate-adress" class="form-control"
+                                                id="exampleFormControlInput1" placeholder="Seu endereço:">
+                                        </div>
 
-                                    <div class="mb-3">
-                                        <label for="exampleFormControlInput1" class="form-label">Quais são as 3 coisas
-                                            mais importantes para você em um emprego?:</label>
-                                        <textarea name="candidate-list" class="form-control" placeholder="Escreva aqui:"
-                                            id="floatingTextarea2" rows="6"></textarea>
-                                    </div>
+                                        <div class="mb-3">
+                                            <label for="exampleFormControlInput1" class="form-label">Cidade:</label>
+                                            <input required type="text" name="candidate-city" class="form-control"
+                                                id="exampleFormControlInput1" placeholder="Cidade onde mora:">
+                                        </div>
 
-                                    <div class="mb-3">
-                                        <label for="exampleFormControlInput1" class="form-label">Preferência de
-                                            vínculo:</label>
-                                        <select name="candidate-preference" class="form-select" aria-label="Default select example">
-                                            <option selected>Selecionar</option>
-                                            <option value="CLT">CLT</option>
-                                            <option value="MEI">MEI</option>
-                                            <option value="AMBOS">AMBOS</option>
-                                            <option value="ESTÁGIO">ESTÁGIO</option>
-                                        </select>
-                                    </div>
+                                        <div class="mb-3">
+                                            <label for="exampleFormControlInput1"
+                                                class="form-label">Escolaridade:</label>
+                                            <select required name="candidate-school" class="form-select"
+                                                aria-label="Default select example">
+                                                <option selected>Selecionar</option>
+                                                <option value="EF">Ensino Fundamental</option>
+                                                <option value="EMI">Ensino Médio Incompleto</option>
+                                                <option value="EMC">Ensino Médio Completo</option>
+                                                <option value="ESI">Ensino Superior Incompleto</option>
+                                                <option value="ESC">Ensino Superior Completo</option>
+                                                <option value="CT">Curso Técnico</option>
+                                            </select>
+                                        </div>
 
-                                    <input type="hidden" name="job-id" value="<?php echo $job['id']?>">
-                                    <button type="submit" name="apply" class="btn w-100 mt-5 btn-warning">Concluir candidatura</button>
+                                        <div class="mb-3">
+                                            <label for="exampleFormControlInput1" class="form-label">Conte um pouco
+                                                sobre
+                                                você: </label>
+                                            <textarea required name="candidate-resume" class="form-control"
+                                                placeholder="Como você descreve sua personalidade?"
+                                                id="floatingTextarea2" rows="6"></textarea>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="exampleFormControlInput1" class="form-label">Por que você está
+                                                procurando um novo emprego?</label>
+                                            <textarea required name="candidate-ask" class="form-control"
+                                                placeholder="Escreva aqui:" id="floatingTextarea2" rows="6"></textarea>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="exampleFormControlInput1" class="form-label">Fale sobre seu
+                                                histórico profissional:</label>
+                                            <textarea required name="candidate-history" class="form-control"
+                                                placeholder="Escreva aqui:" id="floatingTextarea2" rows="6"></textarea>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="exampleFormControlInput1" class="form-label">Quais são as 3
+                                                coisas
+                                                mais importantes para você em um emprego?:</label>
+                                            <textarea required name="candidate-list" class="form-control"
+                                                placeholder="Escreva aqui:" id="floatingTextarea2" rows="6"></textarea>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="exampleFormControlInput1" class="form-label">Preferência de
+                                                vínculo:</label>
+                                            <select required name="candidate-preference" class="form-select"
+                                                aria-label="Default select example">
+                                                <option selected>Selecionar</option>
+                                                <option value="CLT">CLT</option>
+                                                <option value="MEI">MEI</option>
+                                                <option value="AMBOS">AMBOS</option>
+                                                <option value="ESTÁGIO">ESTÁGIO</option>
+                                            </select>
+                                        </div>
+
+                                        <input type="hidden" name="job-id" value="<?php echo $job['id']?>">
+                                        <button type="submit" name="apply" class="btn w-100 mt-5 btn-warning">Enviar Dados</button>
+                                    </div>
                                 </form>
                             </div>
                         </div>
@@ -326,18 +341,18 @@ $jobs = $jobs_class->getJobsToFront();
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <a href="trabalhe-conosco.php" class="">
-                        <i class='bx bxs-circle'></i>
-                        <span>
-                            Trabalhe Conosco
-                        </span>
-                    </a>
                     <div class="info_info">
                         <h5>
                             Entre em Contato
                         </h5>
                     </div>
                     <div class="info_contact">
+                        <a href="trabalhe-conosco.php" class="">
+                            <i class='bx bx-briefcase'></i>
+                            <span>
+                                Trabalhe Conosco
+                            </span>
+                        </a>
                         <a href="" class="">
                             <i class="fa fa-phone" aria-hidden="true"></i>
                             <span>
@@ -372,7 +387,6 @@ $jobs = $jobs_class->getJobsToFront();
     <script src="js/bootstrap.js"></script>
     <script src="js/custom.js"></script>
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
-    <script src="js/app.js"></script>
     <script>
     $(document).ready(function() {
         $(".owl-carousel").owlCarousel({
@@ -404,6 +418,8 @@ $jobs = $jobs_class->getJobsToFront();
     const offcanvasElementList = document.querySelectorAll('.offcanvas')
     const offcanvasList = [...offcanvasElementList].map(offcanvasEl => new bootstrap.Offcanvas(offcanvasEl))
     </script>
+
+    <script src="js/app.js"></script>
 
 </body>
 
