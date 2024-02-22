@@ -237,3 +237,22 @@ footer {
     font-size: 40px;
     color: #FEBE00;
 }
+
+.btn-trasparent {
+    box-shadow: none;
+    border: 2px solid #FEBE00;
+    color: #FEBE00;
+}
+
+.btn-trasparent:hover {
+    background-color: #FEBE00;
+    color: #ffffff;
+    box-shadow: none;
+}
+
+:not(.btn-check)+.btn:active {
+    background-color: #FEBE00;
+    color: #ffffff;
+    box-shadow: none;
+    border: 2px solid #FEBE00;
+}

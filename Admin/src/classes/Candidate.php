@@ -2,6 +2,22 @@
 
 class Candidate {
 
+    public function getAllCandidates()
+    {
+        require 'src/db/connect.php';
+
+        $sql = "SELECT * FROM candidates";
+        $select = $conn->prepare($sql);
+
+        $success = $select->execute();
+
+            if ($success) {
+
+                $data = $select->fetchAll();
+                return $data;
+            }
+    }
+
     public function getCantidatesByJob($id)
     {
         require 'src/db/connect.php';
@@ -51,7 +67,7 @@ class Candidate {
 
                 } else {
 
-                    echo 'Erro ao salvar o arquivo. Aparentemente, você não tem permissão de escrita.<br />';
+                    echo 'Erro ao salvar o arquivo. Aparentemente, você não tem permissão de escrita.</br>';
 
                     return false;
                 }

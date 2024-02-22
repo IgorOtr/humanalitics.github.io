@@ -9,16 +9,7 @@ $class_candidate = new Candidate();
 $class_jobs = new Job();
 
 $jobs = $class_jobs->getJobsToAdmin();
-
-if (isset($_POST['search'])) {
-
-    $cadidates = $class_candidate->getCantidatesByJob($_POST['jobSelected']);
-    $jobTitle = $class_jobs->getJobTitleBtId($_POST['jobSelected']) ;
-
-    // var_dump($cadidates);
-}
-
-
+$cadidates = $class_candidate->getAllCandidates();
 
 include './includes/head.php';
 
@@ -77,20 +68,26 @@ include './includes/head.php';
             </div>
         </div>
 
-        <?php if (isset($_POST['search'])) {?>
+        <?php if (isset($_POST['search'])) {
+            
+            $cadidates = $class_candidate->getCantidatesByJob($_POST['jobSelected']);
+            $jobTitle = $class_jobs->getJobTitleBtId($_POST['jobSelected']) ;
+        ?>
 
         <div class="container" style="margin-top: 40px;">
             <div class="row">
-                <div class="col-md-12 text-center">
-                    <h4 style="color: #FEBE00;">Currículos para a vaga: "<?php echo $jobTitle[0]['job_title']?>"</h4>
-                </div>
+                    <div class="col-md-12 text-center">
+                        <h4 style="color: #FEBE00;">Currículos para a vaga: "<?php echo $jobTitle[0]['job_title']?>"
+                        </h4>
+                    </div>
             </div>
         </div>
 
-        <?php foreach ($cadidates as $key => $cadidate) {?>
+
 
         <div class="container" style="margin-top: 80px;">
             <div class="row">
+            <?php foreach ($cadidates as $key => $cadidate) {?>
                 <div class="col-md-4">
                     <a href="<?php echo SITE_URL.'Admin/candidates/'.$cadidate['candidate_file']?>" target="_blank">
                         <div class="candidate-card">
@@ -98,25 +95,47 @@ include './includes/head.php';
                             <h6 style="color: #FEBE00;">Currículo de: <?php echo $cadidate['candidate_name']?></h6>
                         </div>
                     </a>
+                    <a href="" class="btn btn-trasparent mt-3 w-100">Vizualizar informações</a>
                 </div>
+                <?php }?>
             </div>
         </div>
 
-        <?php }?>
 
-        <?php }else{?>
+
+        <?php }else{
+            
+            $cadidates = $class_candidate->getAllCandidates();
+        ?>
+
+        <div class="container" style="margin-top: 40px;">
+            <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h4 style="color: #FEBE00;">Todos os currículos</h4>
+                    </div>
+            </div>
+        </div>
 
         <div class="container" style="margin-top: 80px;">
             <div class="row">
+                <?php foreach ($cadidates as $key => $cadidate) {
+
+                    $jobTitle = $class_jobs->getJobTitleBtId($cadidate['job_id']);
+
+                ?>
                 <div class="col-md-4">
-                    <a href="">
+                    <a href="<?php echo SITE_URL.'Admin/candidates/'.$cadidate['candidate_file']?>" target="_blank">
                         <div class="candidate-card">
                             <i class='bx bxs-file-pdf'></i>
-                            <h6 style="color: #FEBE00;">Currículo de: NOME DO FDP</h6>
-                            <p style="font-size: 14px;">Vaga de interesse:</p>
+                            <h6 style="color: #FEBE00;">Currículo de: <?php echo $cadidate['candidate_name']?></h6>
+                            <p style="font-size: 14px;">Vaga de interesse: <?php echo $jobTitle[0]['job_title']?></p>
                         </div>
                     </a>
+
+                    <a href="" class="btn btn-trasparent mt-3 w-100">Visualizar informações</a>
                 </div>
+
+                <?php }?>
             </div>
         </div>
 
