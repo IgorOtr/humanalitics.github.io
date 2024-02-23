@@ -2,6 +2,55 @@
 
 class Candidate {
 
+    public function FormatSchool($shool)
+    {
+        switch ($shool) {
+            case 'EF':
+                return 'Ensino Fundamental';
+                break;
+                
+            case 'EMI':
+                return 'Ensino Médio Incompleto';
+                break;
+
+            case 'EMC':
+                return 'Ensino Médio Completo';
+                break;
+
+            case 'ESI':
+                return 'Ensino Superior Imcompleto';
+                break;
+
+            case 'ESC':
+                return 'Ensino Superior Completo';
+                break;
+
+            case 'CT':
+                return 'Curso Técnico';
+                break;
+            
+            default:
+                # code...
+                break;
+        }
+    }
+
+    public function getCandidateById($id)
+    {
+        require 'src/db/connect.php';
+
+        $sql = "SELECT * FROM candidates WHERE id = :_id";
+
+        $select = $conn->prepare($sql);
+        $select->bindValue(':_id', $id);
+
+            if ($select->execute()) {
+
+                $data = $select->fetchAll();
+                return $data;
+            }
+    }
+
     public function getAllCandidates()
     {
         require 'src/db/connect.php';

@@ -11,6 +11,10 @@ $class_jobs = new Job();
 $jobs = $class_jobs->getJobsToAdmin();
 $cadidates = $class_candidate->getAllCandidates();
 
+// echo '<pre>';
+// var_dump($cadidates);
+// echo '</pre>';
+
 include './includes/head.php';
 
 ?>
@@ -95,7 +99,7 @@ include './includes/head.php';
                             <h6 style="color: #FEBE00;">Currículo de: <?php echo $cadidate['candidate_name']?></h6>
                         </div>
                     </a>
-                    <a href="" class="btn btn-trasparent mt-3 w-100">Vizualizar informações</a>
+                    <a href="<?php echo SITE_URL.'Admin/candidate-detail.php'?>" class="btn btn-trasparent mt-3 w-100">Vizualizar informações</a>
                 </div>
                 <?php }?>
             </div>
@@ -120,7 +124,7 @@ include './includes/head.php';
             <div class="row">
                 <?php foreach ($cadidates as $key => $cadidate) {
 
-                    $jobTitle = $class_jobs->getJobTitleBtId($cadidate['job_id']);
+                    $jobTitle = $class_jobs->getJobTitleBtId(2);
 
                 ?>
                 <div class="col-md-4">
@@ -132,7 +136,7 @@ include './includes/head.php';
                         </div>
                     </a>
 
-                    <a href="" class="btn btn-trasparent mt-3 w-100">Visualizar informações</a>
+                    <a href="<?php echo SITE_URL.'Admin/candidate-detail.php?candidateid='.$cadidate['id']?>" class="btn btn-trasparent mt-3 w-100">Visualizar informações</a>
                 </div>
 
                 <?php }?>
